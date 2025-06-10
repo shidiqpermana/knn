@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Klasifikasi Bunga Iris</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            margin-top: 15px;
+            display: block;
+            color: #444;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Prediksi Jenis Bunga Iris</h2>
+        <form method="POST" action="/predict">
+            <label>Panjang Sepal (cm):</label>
+            <input type="number" step="0.01" name="sepal_length" required>
+
+            <label>Lebar Sepal (cm):</label>
+            <input type="number" step="0.01" name="sepal_width" required>
+
+            <label>Panjang Petal (cm):</label>
+            <input type="number" step="0.01" name="petal_length" required>
+
+            <label>Lebar Petal (cm):</label>
+            <input type="number" step="0.01" name="petal_width" required>
+
+            <input type="submit" value="Prediksi">
+        </form>
+
+        {% if species %}
+        <div class="result">
+            <strong>Jenis Bunga:</strong> {{ species }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
